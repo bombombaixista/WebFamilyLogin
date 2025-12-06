@@ -1,0 +1,61 @@
+# Build results
+bin/
+obj/
+out/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Visual Studio
+.vs/
+
+# Visual Studio Code
+.vscode/
+
+# Rider
+.idea/
+
+# Logs
+*.log
+
+# Backup and temp files
+*.bak
+*.tmp
+*.swp
+*.db
+
+# Publish outputs
+publish/
+dist/
+
+# ASP.NET scaffolding
+ScaffoldingReadMe.txt
+
+# Migrations (opcional, se não quiser versionar)
+Migrations/
+
+# Configurações locais e secrets
+appsettings.Development.json
+appsettings.Local.json
+appsettings.*.json
+
+# Docker artifacts
+docker-compose.override.yml
+*.dockerfile
+
+# Node (se usar frontend junto)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# MacOS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini

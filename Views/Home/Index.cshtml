@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="container mt-5">
+    <h2 class="text-center">Bem-vindo ao WebFamilyLogin</h2>
+    <p class="text-center">Faça login para acessar o sistema</p>
+
+    <form asp-controller="Login" asp-action="Index" method="post" class="mt-4">
+        <div class="form-group">
+            <label>Email</label>
+            <input type="email" name="Email" class="form-control" required />
+        </div>
+        <div class="form-group mt-3">
+            <label>Senha</label>
+            <input type="password" name="Senha" class="form-control" required />
+        </div>
+        <button type="submit" class="btn btn-primary mt-3">Entrar</button>
+    </form>
+
+    <div class="text-center mt-4">
+        <p>Ainda não tem conta?</p>
+        <a asp-controller="Login" asp-action="Cadastro" class="btn btn-link">Cadastre-se aqui</a>
+    </div>
+</div>
