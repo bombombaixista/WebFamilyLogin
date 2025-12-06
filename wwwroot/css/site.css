@@ -1,31 +1,37 @@
-html {
-  font-size: 14px;
+/* Fundo com gradiente */
+.bg-gradient {
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
 }
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+/* Card estilizado */
+.card {
+    border-radius: 12px;
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+/* Botões */
+.btn-primary {
+    background-color: #2575fc;
+    border: none;
+    font-weight: bold;
 }
 
-html {
-  position: relative;
-  min-height: 100%;
+    .btn-primary:hover {
+        background-color: #1a5edb;
+    }
+
+.btn-success {
+    background-color: #28a745;
+    border: none;
+    font-weight: bold;
 }
 
-body {
-  margin-bottom: 60px;
-}
+    .btn-success:hover {
+        background-color: #218838;
+    }
 
-.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
-  color: var(--bs-secondary-color);
-  text-align: end;
-}
-
-.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
-  text-align: start;
+/* Header */
+.card-header {
+    font-size: 1.4rem;
+    font-weight: bold;
+    letter-spacing: 1px;
 }
