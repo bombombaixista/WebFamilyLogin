@@ -1,32 +1,24 @@
-﻿@{
+﻿@model WebFamilyLogin.Models.Cliente
+@{
     ViewData["Title"] = "Cadastro";
 }
 
-<div class="d-flex align-items-center justify-content-center vh-100 bg-gradient">
-    <div class="card shadow-lg" style="width: 500px;">
-        <div class="card-header text-center bg-success text-white">
-            <h4>WebFamily - Cadastro</h4>
-        </div>
-        <div class="card-body">
-            <form asp-action="Cadastro" method="post">
-                <div class="mb-3">
-                    <label class="form-label">Nome</label>
-                    <input type="text" name="Nome" class="form-control" placeholder="Digite seu nome completo" required />
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Email</label>
-                    <input type="email" name="Email" class="form-control" placeholder="Digite seu email" required />
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Senha</label>
-                    <input type="password" name="Senha" class="form-control" placeholder="Crie uma senha segura" required />
-                </div>
-                <button type="submit" class="btn btn-success w-100">Cadastrar</button>
-            </form>
-        </div>
-        <div class="card-footer text-center">
-            <small>Já tem conta?</small><br />
-            <a asp-controller="Login" asp-action="Index" class="btn btn-link">Voltar para Login</a>
-        </div>
+<form asp-controller="Login" asp-action="Cadastro" method="post">
+    @Html.AntiForgeryToken()
+    <div class="mb-3">
+        <label asp-for="Nome" class="form-label"></label>
+        <input asp-for="Nome" class="form-control" />
+        <span asp-validation-for="Nome" class="text-danger"></span>
     </div>
-</div>
+    <div class="mb-3">
+        <label asp-for="Email" class="form-label"></label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Senha</label>
+        <input asp-for="SenhaHash" type="password" class="form-control" />
+        <span asp-validation-for="SenhaHash" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-success w-100">Cadastrar</button>
+</form>

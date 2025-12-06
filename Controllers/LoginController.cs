@@ -2,37 +2,56 @@
 using WebFamilyLogin.Data;
 using WebFamilyLogin.Models;
 
-public class LoginController : Controller
+namespace WebFamilyLogin.Controllers
 {
-    private readonly AppDbContext _context;
-
-    public LoginController(AppDbContext context)
+    public class LoginController : Controller
     {
-        _context = context;
-    }
+        private readonly AppDbContext _context;
 
-    [HttpGet]
-    public IActionResult Cadastro()
-    {
-        return View();
-    }
-
-    [HttpPost]
-    public IActionResult Cadastro(Cliente cliente)
-    {
-        if (ModelState.IsValid)
+        public LoginController(AppDbContext context)
         {
+            _context = context;
+        }
+
+        // GET /Login/Cadastro
+        [HttpGet]
+        public IActionResult Cadastro()
+        {
+            return View(); // Views/Login/Cadastro.cshtml
+        }
+
+        // POST /Login/Cadastro
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Cadastro(Cliente cliente)
+        {
+            // Log simples para diagnosticar fluxo
+            Console.WriteLine("POST /Login/Cadastro chamado");
+
+            if (!ModelState.IsValid)
+            {
+                return View(cliente);
+            }
+
+            // Preenche campos de sistema
             cliente.DataCadastro = DateTime.Now;
 
-            // Aqui você pode aplicar hash na senha antes de salvar
+            // Se quiser usar hash de senha (opcional):
             // cliente.SenhaHash = BCrypt.Net.BCrypt.HashPassword(cliente.SenhaHash);
 
             _context.Clientes.Add(cliente);
-            _context.SaveChanges();
+            var changed = _context.SaveChanges();
+            Console.WriteLine($"Linhas afetadas: {changed}");
 
+            // Redireciona após sucesso
             return RedirectToAction("Index", "Home");
         }
 
-        return View(cliente);
+        // GET /Login (tela de login)
+        [HttpGet]
+        public IActionResult Index()
+        {
+            return View(); // Views/Login/Index.cshtml (se existir)
+        }
     }
 }

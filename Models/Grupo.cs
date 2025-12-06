@@ -1,18 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace WebFamilyLogin.Models
+﻿namespace WebFamilyLogin.Models
 {
     public class Grupo
     {
         public int Id { get; set; }
-
-        [Required]
-        [MaxLength(100)]
-        public string? Nome { get; set; }
-
-        public DateTime DataCriacao { get; set; } = DateTime.Now;
+        public string Nome { get; set; } = string.Empty;
+        public DateTime DataCriacao { get; set; }
 
         // Relacionamento: um grupo pode ter vários clientes
-        public ICollection<Cliente>? Clientes { get; set; }
+        public ICollection<Cliente> Clientes { get; set; } = new List<Cliente>();
     }
 }

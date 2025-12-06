@@ -7,8 +7,9 @@ namespace WebFamilyLogin.Data
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
+        // DbSets correspondem às tabelas criadas pela migration
         public DbSet<Cliente> Clientes { get; set; }
-        public DbSet<Grupo> Grupos { get; set; }
         public DbSet<Usuario> Usuarios { get; set; }
+        public DbSet<Grupo> Grupos { get; set; }
     }
 }
